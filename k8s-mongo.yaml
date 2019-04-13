@@ -1,0 +1,54 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mongodb
+spec:
+  selector:
+    app: devops-app
+    tier: database
+  ports:
+  - protocol: TCP
+    port: 27017
+    targetPort: http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+spec:
+  selector:
+    matchLabels:
+      app: devops-app
+      tier: database
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: devops-app
+        tier: database
+        track: stable
+    spec:
+      containers:
+        - name: mongo
+          image: "mongo:4.0"
+          ports:
+            - name: http
+              containerPort: 27017
+          volumeMounts:
+          - mountPath: "/data/db"
+            name: mongo-data
+      volumes:
+        - name: mongo-data
+          persistentVolumeClaim:
+            claimName: mongo-volume   
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
