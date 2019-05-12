@@ -1,0 +1,38 @@
+version: '3.7'
+services:
+  devops-app:
+    image: mosersts/devopsapp:preview
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+        mode: ingress
+    environment:
+      - CONFIG_FILE=/devopsapp-config
+      - MONGO_PASS_FILE=/run/secrets/mongo-root-cred
+    secrets:
+      - mongo-root-cred 
+    configs:
+      - devopsapp-config
+  mongodb:
+    image: mongo:4.0
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=mongoAdmin
+      - MONGO_INITDB_ROOT_PASSWORD_FILE=/run/secrets/mongo-root-cred
+    secrets:
+      - mongo-root-cred
+    ports:
+     - "27017:27017"
+    volumes:
+    - mongo-docker-volume:/data/db
+
+secrets:
+  mongo-root-cred:
+    external: true
+    name: mongo-root
+configs:
+  devopsapp-config:
+    external: true
+    name: devopsapp-config
+volumes:
+  mongo-docker-volume:
