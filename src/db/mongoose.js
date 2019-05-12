@@ -1,18 +1,26 @@
 const mongoose = require('mongoose');
 const { User } = require('../models/user')
+const fs = require('fs');
 const util = require('util');
 const setTimeoutPromise = util.promisify(setTimeout);
-const config = require('../config/config.json')
-const mongoURL = process.env.MONGODB_URI || config.MONGODB_URI
+const { MONGO, USERS } = require('../config/config.js')
+const mongoHost = process.env.MONGO_HOST || MONGO.HOST
+const mongoPort = process.env.MONGO_PORT || MONGO.PORT
+const mongoDB = process.env.MONGO_DB || MONGO.DB
+const mongoUser = process.env.MONGO_USER || MONGO.USER
 mongoose.Promise = global.Promise
 
 
 async function connectToDB() {
     try {
-        await  mongoose.connect(mongoURL, { useNewUrlParser: true })
-        console.log(`Connection opened to DB ${mongoURL}`);
+        const mongoPass = fs.readFileSync(process.env.MONGO_PASS_FILE,{
+            encoding: 'utf-8'
+        })
+        const mongoURI = `mongodb://${mongoUser}:${mongoPass}@${mongoHost}:${mongoPort}/${mongoDB}?authSource=admin`
+        await  mongoose.connect(mongoURI, { useNewUrlParser: true })
+        console.log(`Connection opened to DB ${mongoHost}`);
     } catch (error) {
-        console.error(`Failed to connect to DB ${mongoURL} with error: ${error}`);
+        console.error(`Failed to connect to DB ${mongoHost} with error: ${error}`);
         console.info('Retry in 5 seconds')
         await setTimeoutPromise(5000)
         await connectToDB()
@@ -20,7 +28,7 @@ async function connectToDB() {
 }
 
 async function populateWithDefault() {
-    const usersToSave = config.USERS.map((user) => {
+    const usersToSave = USERS.map((user) => {
         const newUser = new User({
             username:user
         })
@@ -29,7 +37,7 @@ async function populateWithDefault() {
     })
     try {
         await Promise.all(usersToSave);
-        console.info(`Default Users saved in DB : ${JSON.stringify(config.USERS)}`)
+        console.info(`Default Users saved in DB : ${JSON.stringify(USERS)}`)
     } catch (error) {
         console.log(JSON.stringify(error))
         console.warn(`Add default users failed : ${error}`)

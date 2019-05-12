@@ -1,5 +1,5 @@
 require('log-timestamp');
-const config = require('./config/config.json');
+const config = require('./config/config.js');
 const {
     connectToDB,
     populateWithDefault

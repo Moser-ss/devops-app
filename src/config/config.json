@@ -1,11 +1,15 @@
 {
     "PORT": 3000,
     "GISTS_CRON": "*/5 * * * *",
-    "MONGODB_URI": "mongodb://localhost:27017/DevOpsApp",
     "USERS": [
         "alexloi",
         "alexellis",
         "carsonoid"
-    ]
-
+    ],
+    "MONGO": {
+        "HOST": "mongodb",
+        "PORT": 27017,
+        "DB": "DevOpsApp",
+        "USER": "mongoAdmin"
+    }
 }
