@@ -1,8 +1,8 @@
 FROM node:10-alpine
 
-COPY . /app
-WORKDIR /app
-RUN npm ci --prodution
-USER nobody
+EXPOSE 3000
+EXPOSE 9090
 
-CMD ["node", "/app/src/app.js"]
+WORKDIR /app
+
+CMD ["node_modules/.bin/nodemon", "--watch","src","--inspect=0.0.0.0:9090","."]
