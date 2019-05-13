@@ -22,7 +22,7 @@ services:
     secrets:
       - mongo-root-cred
     ports:
-     - "27017:27017"
+     - "27017"
     volumes:
     - mongo-docker-volume:/data/db
 
