@@ -1,0 +1,6 @@
+docker secret create mongo-root ./dev/secret_data
+docker config create devopsapp-config ./dev/config.json
+docker stack deploy -c docker-compose.deploy.yaml demo
+docker stack ps demo
+docker inspect <taskID>  --format='{{.Status.ContainerStatus.ContainerID}}'
+#Show networks
