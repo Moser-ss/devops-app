@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- '10'
+addons:
+  sonarcloud:
+    organization: moser-ss-github
+    token:
+      secure: Hwj2OCYf5slftiucTGDdX25CgFlZCX7mxLNrAz3T/GvSoZT+9+jV4r6+xsYIYP4znmLDpVW+6lu8E3ptDCPwOrji/lWE/IJnIvCQ/MCjdHx50zMwitDLyHtDT7cIkr38+0PJxgSJZRU159tyRfwT0cUc0LMD35IFeg2gjf4tgMLX0aQFe7uktzZA+xVfmwY3o39DDcmAFpIszFPuP/kV3oDt1G9D92FHHqkWUGYXEOln7JTWpVEz302llHN2IjGzK6I3WOUSduJfL08vOtmKTgoPKylw5DtyBcu9Af9rfWbvVJmp7IAoNkt1dDaSiscu6C0TBIvaCOek3vjks1xC05oIVp63jMY03X9mU+mZY5VIgu8nh9Kauy1fHZ/XudcW1Q4mTkVP07BFghSt/1H1ZRN515Aa6d+cdqGd/Okp5aoHSp455fUU5w32CgcCZfLTNyUO/BIHiaUM0dtXz6EH31VaIWaqkTU3kxFprpjTV2xJ4xJ1CbF+Q+vnzDysskRPFJm7IO0KADKG2Wu7CPpfRaF0UxpUwNQeo0k90XIe1HNOp3oAq0643Lr809Bm3v6SqLYiQjvjuNADnERaW1V4EJsaQZexm1Xv5dRfRgIr43e+Z9CbS2qMVsx/fZvJV79YCmoTKAhPkH9/Jtr3JBws+YDt/ARVlRX2uH0T9N4QB/Q=
+script:
+- npm run test
+- sonar-scanner
