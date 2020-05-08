@@ -43,6 +43,6 @@ jobs:
         uses: ridedott/merge-me-action@master
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_LOGIN: synk-bot
+          GITHUB_LOGIN: snyk-bot
 
 
