@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
         - name: devops-app
-          image: "gcr.io/devopsapp-236321/devops-app:ca2ea817c0"
+          image: mosersts/devopsapp:k8s
           ports:
             - name: http
               containerPort: 3000
