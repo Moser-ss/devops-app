@@ -18,7 +18,7 @@
     "mongodb": "^3.2.2",
     "mongoose": "^5.7.5",
     "node-cron": "^2.0.3",
-    "util": "^0.12.2",
+    "util": "^0.12.3",
     "snyk": "^1.319.1"
   },
   "snyk": true
