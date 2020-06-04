@@ -11,7 +11,7 @@
   "author": "moser-ss",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.19.2",
     "express": "^4.16.4",
     "lodash": "^4.17.12",
     "log-timestamp": "^0.3.0",
