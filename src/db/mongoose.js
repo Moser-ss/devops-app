@@ -43,10 +43,10 @@ function healthcheckToDB() {
         if(readyState == 1 || readyState ==2 ){
             healthCheck = true
         }
+        return healthCheck
     } catch (error) {
-        console.error(`Failed to check DB health state. Error :  ${erro}`)
-    }finally{
-        return healthCheck;
+        console.error(`Failed to check DB health state. Error :  ${error}`)
+        return healthCheck
     }
 }
 
