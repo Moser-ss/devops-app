@@ -1,11 +1,24 @@
+const Joi = require('joi');
 const _ = require('lodash')
 const router = require('express').Router();
 const {Gist} = require('../models/gist');
 const { User } = require('../models/user')
 const { updateAndStoreGits } = require('../tasks/gists');
 
+
+const requestSchema = Joi.object({
+    username: Joi.string()
+})
 router.get('/:username', async (req, res) => {
-    const { username } = req.params
+    let validatedParams
+    try {
+       validatedParams = requestSchema.validate(req.params)
+    } catch (error) {
+        res.status(400).send({
+            message: 'Invalid request format'
+        })
+    }
+    const { username } = validatedParams
     const user = await User.findOne({
         username: username
     })
@@ -22,7 +35,7 @@ router.get('/:username', async (req, res) => {
             })
             updateAndStoreGits(username)
         } catch (error) {
-            res.status(400).send({
+            res.status(409).send({
                 username,
                 message: `User ${username} already exists in Users Collection.`
             })
