@@ -11,15 +11,16 @@
   "author": "moser-ss",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
-    "express": "^4.16.4",
-    "lodash": "^4.17.19",
-    "log-timestamp": "^0.3.0",
-    "mongoose": "^5.12.2",
-    "mongodb": "^3.5.8",
-    "node-cron": "^2.0.3",
-    "util": "^0.12.3",
-    "snyk": "^1.465.0"
+    "axios": "0.19.2",
+    "express": "4.16.4",
+    "joi": "17.4.0",
+    "lodash": "4.17.21",
+    "log-timestamp": "0.3.0",
+    "mongoose": "5.12.2",
+    "mongodb": "3.5.8",
+    "node-cron": "2.0.3",
+    "util": "0.12.3",
+    "snyk": "1.364.2"
   },
   "snyk": true
 }
