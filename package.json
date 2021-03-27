@@ -13,13 +13,14 @@
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.16.4",
-    "lodash": "^4.17.19",
+    "joi": "^17.4.0",
+    "lodash": "^4.17.21",
     "log-timestamp": "^0.3.0",
-    "mongoose": "^5.9.18",
     "mongodb": "^3.5.8",
+    "mongoose": "^5.9.18",
     "node-cron": "^2.0.3",
-    "util": "^0.12.3",
-    "snyk": "^1.337.0"
+    "snyk": "^1.337.0",
+    "util": "^0.12.3"
   },
   "snyk": true
 }
