@@ -11,16 +11,16 @@
   "author": "moser-ss",
   "license": "ISC",
   "dependencies": {
-    "axios": "0.19.2",
+    "axios": "0.21.1",
     "express": "4.16.4",
     "joi": "17.4.0",
     "lodash": "4.17.21",
     "log-timestamp": "0.3.0",
-    "mongoose": "5.12.2",
     "mongodb": "3.5.8",
+    "mongoose": "5.12.2",
     "node-cron": "2.0.3",
-    "util": "0.12.3",
-    "snyk": "1.364.2"
+    "snyk": "1.465.0",
+    "util": "0.12.3"
   },
   "snyk": true
 }
