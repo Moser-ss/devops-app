@@ -4,9 +4,7 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "test": "echo \"No tests\"",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "test": "echo \"No tests\""
   },
   "author": "moser-ss",
   "license": "ISC",
@@ -19,8 +17,6 @@
     "mongodb": "3.5.9",
     "mongoose": "5.12.2",
     "node-cron": "2.0.3",
-    "snyk": "1.465.0",
     "util": "0.12.3"
-  },
-  "snyk": true
+  }
 }
