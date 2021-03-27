@@ -1,14 +1,26 @@
+const Joi = require('joi');
 const _ = require('lodash')
 const router = require('express').Router();
 const {Gist} = require('../models/gist');
 const { User } = require('../models/user')
 const { updateAndStoreGits } = require('../tasks/gists');
 
+
+const requestSchema = Joi.object({
+    username: Joi.string()
+})
 router.get('/:username', async (req, res) => {
-    const { username } = req.params
-    const query = req.query
+    let validatedParams
+    try {
+       validatedParams = requestSchema.validate(req.params)
+    } catch (error) {
+        res.status(400).send({
+            message: 'Invalid request format'
+        })
+    }
+    const { username } = validatedParams
     const user = await User.findOne({
-        username
+        username: username
     })
 
     if(!user){
@@ -19,11 +31,11 @@ router.get('/:username', async (req, res) => {
             await newUser.save()
             res.status(404).send({
                 username,
-                message: `User ${username} in Users Collection. User added and gits will be fetch now. In an momments it will be available`
+                message: `User ${username} in Users Collection. User added and gits will be fetch now. In an moments it will be available`
             })
             updateAndStoreGits(username)
         } catch (error) {
-            res.status(400).send({
+            res.status(409).send({
                 username,
                 message: `User ${username} already exists in Users Collection.`
             })
