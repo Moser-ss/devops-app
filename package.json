@@ -9,7 +9,7 @@
   "author": "moser-ss",
   "license": "ISC",
   "dependencies": {
-    "axios": "0.21.1",
+    "axios": "0.21.3",
     "express": "4.16.4",
     "joi": "17.4.0",
     "lodash": "4.17.21",
