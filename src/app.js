@@ -6,6 +6,7 @@ const {
 } = require('./db/mongoose');
 const express = require('express');
 const app = express();
+app.disable('x-powered-by');
 const port = process.env.PORT || config.PORT
 const router = require('./router')
 const jobs = require('./jobs')
