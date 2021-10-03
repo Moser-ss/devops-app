@@ -5,5 +5,5 @@ LABEL org.opencontainers.image.authors="@StMoser"
 CMD ["node", "/app/src/app.js"]
 USER nobody
 
-COPY node_modules /app/node_modules
+COPY node_modules/ /app/node_modules
 COPY src/ /app/src
