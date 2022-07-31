@@ -11,7 +11,7 @@
   "dependencies": {
     "axios": "0.27.2",
     "joi": "17.4.2",
-    "express": "4.17.3",
+    "express": "4.18.1",
     "lodash": "4.17.21",
     "log-timestamp": "0.3.0",
     "mongoose": "6.1.2",
