@@ -15,7 +15,7 @@
     "lodash": "4.17.21",
     "log-timestamp": "0.3.0",
     "mongoose": "6.6.6",
-    "mongodb": "4.10.0",
+    "mongodb": "4.11.0",
     "node-cron": "3.0.2",
     "util": "0.12.5"
   }
