@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:18-alpine
 LABEL org.opencontainers.image.source=https://github.com/Moser-ss/devops-app
 LABEL org.opencontainers.image.authors="@StMoser"
 
